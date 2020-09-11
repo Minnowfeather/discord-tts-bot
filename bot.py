@@ -58,10 +58,10 @@ async def on_message(message):
 			if(vol < 0.00):
 				vol = 0.00
 			vc.source.volume = vol
-		elif(msg[0] == "bind"):
+		elif(msg[0] == "bind" and user == 0):
 			user = message.mentions[0].id
 			await message.channel.send("`Now bound to: " + message.mentions[0].display_name + "`")
-		elif(msg[0] == "unbind"):
+		elif(msg[0] == "unbind" and message.author.id == user):
 			user = 0
 			await message.channel.send("`No longer bound.`")
 	if(message.author.id == user and message.content[0] != prefix):
